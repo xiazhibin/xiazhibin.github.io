@@ -13,10 +13,10 @@
     
     <item>
       <title>Test</title>
-      <link>https://xiazhibin.github.io/post/2020/06/04/test/</link>
+      <link>https://xiazhibin.github.io/post/2020/06/04/</link>
       <pubDate>Fri, 12 Jun 2020 09:58:02 +0800</pubDate>
       
-      <guid>https://xiazhibin.github.io/post/2020/06/04/test/</guid>
+      <guid>https://xiazhibin.github.io/post/2020/06/04/</guid>
       <description>Test 我是向量 $$ \vec a\quad\overrightarrow{AB} \\ \vec x = \overrightarrow{AB} $$ 我是矩阵 $$ \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \\\\\\ \begin{pmatrix} 3 &amp; 2 &amp; 1 \end{pmatrix} \\\\\\ \begin{pmatrix} 3 \\ 2 \\ 1 \end{pmatrix} \\\\\\ $$ 我是三角函数 $$ \sin\left(a\right) \quad \cos(b^\prime) $$</description>
     </item>
     
