@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>丁丁的blog</title>
+    <title>dingding的blog</title>
     <link>https://xiazhibin.github.io/</link>
-    <description>Recent content on 丁丁的blog</description>
+    <description>Recent content on dingding的blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Jun 2020 22:35:25 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2020 09:58:02 +0800</lastBuildDate>
     
 	<atom:link href="https://xiazhibin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Test</title>
+      <link>https://xiazhibin.github.io/post/2020/06/04/test/</link>
+      <pubDate>Fri, 12 Jun 2020 09:58:02 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/04/test/</guid>
+      <description>Test 我是向量 $$ \vec a\quad\overrightarrow{AB} \\ \vec x = \overrightarrow{AB} $$ 我是矩阵 $$ \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \\\\\\ \begin{pmatrix} 3 &amp; 2 &amp; 1 \end{pmatrix} \\\\\\ \begin{pmatrix} 3 \\ 2 \\ 1 \end{pmatrix} \\\\\\ $$ 我是三角函数 $$ \sin\left(a\right) \quad \cos(b^\prime) $$</description>
+    </item>
     
     <item>
       <title>06/09</title>
