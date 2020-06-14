@@ -6,10 +6,46 @@
     <description>Recent content on dingding的blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Jun 2020 09:58:02 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 17:57:57 +0800</lastBuildDate>
     
 	<atom:link href="https://xiazhibin.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化</title>
+      <link>https://xiazhibin.github.io/post/2020/06/15/</link>
+      <pubDate>Sun, 14 Jun 2020 17:57:57 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/15/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 变换(2)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/14/</link>
+      <pubDate>Sun, 14 Jun 2020 10:43:04 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/14/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 变换(1)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/12/</link>
+      <pubDate>Fri, 12 Jun 2020 23:23:40 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 线性代数</title>
+      <link>https://xiazhibin.github.io/post/2020/06/11/</link>
+      <pubDate>Fri, 12 Jun 2020 16:58:43 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/11/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Test</title>
@@ -17,7 +53,7 @@
       <pubDate>Fri, 12 Jun 2020 09:58:02 +0800</pubDate>
       
       <guid>https://xiazhibin.github.io/post/2020/06/04/</guid>
-      <description>Test 我是向量 $$ \vec a\quad\overrightarrow{AB} \\ \vec x = \overrightarrow{AB} $$ 我是矩阵 $$ \begin{bmatrix} 0 &amp; -1 \\ 1 &amp; 0 \end{bmatrix} \\\\\\ \begin{pmatrix} 3 &amp; 2 &amp; 1 \end{pmatrix} \\\\\\ \begin{pmatrix} 3 \\ 2 \\ 1 \end{pmatrix} \\\\\\ $$ 我是三角函数 $$ \sin\left(a\right) \quad \cos(b^\prime) $$</description>
+      <description>&lt;p&gt;本篇为测试&lt;/p&gt;</description>
     </item>
     
   </channel>
