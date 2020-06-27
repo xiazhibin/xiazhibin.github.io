@@ -49,11 +49,11 @@
 <meta itemprop="description" content="">
 <meta itemprop="datePublished" content="2020-06-14T10:43:04&#43;08:00" />
 <meta itemprop="dateModified" content="2020-06-14T10:43:04&#43;08:00" />
-<meta itemprop="wordCount" content="1060">
+<meta itemprop="wordCount" content="1077">
 
 
 
-<meta itemprop="keywords" content="图形学," /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="图形学,game101," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 变换(2)"/>
 <meta name="twitter:description" content=""/>
 
@@ -144,6 +144,10 @@
 <li><a href="#正交投影">正交投影</a></li>
 <li><a href="#透视投影">透视投影</a></li>
 <li><a href="#fov-和-aspect-ratio">fov 和 aspect ratio</a></li>
+</ul></li>
+<li><a href="#课后问题">课后问题</a>
+<ul>
+<li><a href="#推导">推导</a></li>
 </ul></li>
 <li><a href="#参考">参考</a></li>
 </ul></li>
@@ -611,6 +615,22 @@ n & 0 & 0 & 0 \\
 
 $$</div>
 
+<h2 id="课后问题">课后问题</h2>
+
+<p>平截头体压缩成长方体以后，内部的点的z值是更偏向于近平面还是更偏向于远平面了。</p>
+
+<h3 id="推导">推导</h3>
+
+<p>对于点<span>$(x,y,1)$</span>, 我们由矩阵<span>$M_{persp-&gt;ortho}$</span>，可得转换后的点是<span>$(nx,ny,z(n+f)-nf,z)$</span>，我们将这个点的w项变成1，可得
+<span>$(\frac{nx}{z},\frac{ny}{z},n+f-\frac{nf}{z},1)$</span>,因此经过转换后，原来的z变成的<span>$z^\prime=n+f-\frac{nf}{z}$</span>，那么问题就变成比较z和<span>$n+f-\frac{nf}{z}$</span>
+的大小，那么我们就用作图法解决这个问题。</p>
+
+<p>我们假设n,f都是绝对值，视锥体内部的点都满足0&lt;n&lt;z&lt;f</p>
+
+<p><img src="./14_1.jpg" alt="" /></p>
+
+<p>由图像直接可得，在 0 &lt; n &lt; z &lt; f 范围内，n+f-nf/z&gt;z，那么就是更加靠近远平面</p>
+
 <h2 id="参考">参考</h2>
 
 <p><a href="https://www.bilibili.com/video/BV1X7411F744?p=4" target="_blank">Lecture 04 Transformation Cont</a></p>
@@ -634,11 +654,12 @@ $$</div>
 <footer class="post-footer">
       <div class="post-tags">
           <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+          <a href="/tags/game101/">game101</a>
           </div>
       <nav class="post-nav">
         <a class="prev" href="/post/2020/06/15/">
             <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化</span>
+            <span class="prev-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(1)</span>
             <span class="prev-text nav-mobile">上一篇</span>
           </a>
         <a class="next" href="/post/2020/06/12/">
@@ -652,7 +673,14 @@ $$</div>
         </div>
         
 
-  
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'xiazhibin/hugo-comment'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
   
 
   

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>game101 on dingding的blog</title>
+    <link>https://xiazhibin.github.io/tags/game101/</link>
+    <description>Recent content in game101 on dingding的blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Jun 2020 10:26:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://xiazhibin.github.io/tags/game101/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/23/</link>
+      <pubDate>Sat, 27 Jun 2020 10:26:18 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/23/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/22/</link>
+      <pubDate>Tue, 23 Jun 2020 20:58:32 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/22/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/16/</link>
+      <pubDate>Sun, 14 Jun 2020 19:08:05 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/16/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(1)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/15/</link>
+      <pubDate>Sun, 14 Jun 2020 17:57:57 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/15/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 变换(2)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/14/</link>
+      <pubDate>Sun, 14 Jun 2020 10:43:04 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/14/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 变换(1)</title>
+      <link>https://xiazhibin.github.io/post/2020/06/12/</link>
+      <pubDate>Fri, 12 Jun 2020 23:23:40 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/12/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 线性代数</title>
+      <link>https://xiazhibin.github.io/post/2020/06/11/</link>
+      <pubDate>Fri, 12 Jun 2020 16:58:43 +0800</pubDate>
+      
+      <guid>https://xiazhibin.github.io/post/2020/06/11/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

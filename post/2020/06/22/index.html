@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading) - dingding的blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dingding" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
+
+
+<link rel="canonical" href="https://xiazhibin.github.io/post/2020/06/22/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiazhibin.github.io/post/2020/06/22/" />
+<meta property="article:published_time" content="2020-06-23T20:58:32+08:00" />
+<meta property="article:modified_time" content="2020-06-23T20:58:32+08:00" />
+<meta itemprop="name" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)">
+<meta itemprop="description" content="">
+<meta itemprop="datePublished" content="2020-06-23T20:58:32&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-23T20:58:32&#43;08:00" />
+<meta itemprop="wordCount" content="132">
+
+
+
+<meta itemprop="keywords" content="图形学,game101," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)"/>
+<meta name="twitter:description" content=""/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">dingding</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">dingding</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-06-23 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"> 图形学 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#着色-shading">着色(shading)</a>
+<ul>
+<li><a href="#blinn-phong反射模型-最基本的着色模型">Blinn-Phong反射模型 - 最基本的着色模型</a></li>
+<li><a href="#漫反射-diffuse-reflection-lambertian-shading">漫反射(diffuse reflection)(Lambertian shading)</a></li>
+<li><a href="#高光-specular-镜面反射">高光(specular)/镜面反射</a>
+<ul>
+<li><a href="#blinn-phong模型">Blinn-Phong模型</a></li>
+</ul></li>
+<li><a href="#环境光-ambient">环境光(ambient)</a></li>
+<li><a href="#blinn-phong反射模型">Blinn-Phong反射模型</a></li>
+</ul></li>
+<li><a href="#着色方法-频率">着色方法/频率</a>
+<ul>
+<li><a href="#flat-shading">flat shading</a></li>
+<li><a href="#gouraud-shading">gouraud shading</a></li>
+<li><a href="#phong-shading">phong shading</a></li>
+</ul></li>
+<li><a href="#渲染管线-流水线">渲染管线/流水线</a>
+<ul>
+<li><a href="#顶点处理-mvp变换">顶点处理(MVP变换)</a></li>
+<li><a href="#光栅化">光栅化</a></li>
+<li><a href="#深度测试">深度测试</a></li>
+<li><a href="#着色">着色</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="着色-shading">着色(shading)</h2>
+
+<p>对物体应用材质</p>
+
+<h3 id="blinn-phong反射模型-最基本的着色模型">Blinn-Phong反射模型 - 最基本的着色模型</h3>
+
+<p>光线如何与材质进行作用，如何进行反射</p>
+
+<p><img src="./22_1.png" alt="" /></p>
+
+<p>如上图，我们将光线简单分类成三种</p>
+
+<ul>
+<li>高光(specular highlights)</li>
+<li>漫反射(diffuse reflection)</li>
+<li>环境光(ambient lighting)</li>
+</ul>
+
+<p>在研究之前我们先定义一些概念</p>
+
+<p><img src="./22_2.png" alt="" /></p>
+
+<ul>
+<li>观察方向，v</li>
+<li>面的法线，n</li>
+<li>光照方向，l</li>
+<li>一些面的参数(color,shininess)</li>
+</ul>
+
+<p>注意，这些向量都是<strong>单位向量</strong>基于他们的<strong>方向</strong></p>
+
+<h3 id="漫反射-diffuse-reflection-lambertian-shading">漫反射(diffuse reflection)(Lambertian shading)</h3>
+
+<p>入射光线均匀反射到各个方向</p>
+
+<p><img src="./22_3.png" alt="" /></p>
+
+<p>首先应该考虑入射的角度所造成的接收到光强的损失</p>
+
+<p><img src="./22_4.png" alt="" /></p>
+
+<p>只有当入射光线与平面垂直的时候才能完整的接受所有光的能量，而入射角度越倾斜损失的能量越大，具体来说，我们应该将光强乘上一
+个<span>$\cos \theta = l \cdot n$</span></p>
+
+<p>除了入射角度之外，光源与照射点的距离也应该考虑，直观来说，离得越远当然强度也就越弱！具体来说如图所示</p>
+
+<p><img src="./22_5.png" alt="" /></p>
+
+<p>图中中心为一个点光源，光线均匀的向周围发射，可以想象光源发射出来的能量其实是一定的，那么在任意两个圈上接受到的能量之和一定相等。在空间上来看，这些能量是分散在球的表面积。并且距离点光源越远，其
+表面积越大，所以我们将能量将于半径的平方:<span>$ I / r^2$</span></p>
+
+<p>因此我们得到一个比较准确的漫反射模型<span>$ L_d = k_d(I/r^2)max(0, n \cdot l ) $</span></p>
+
+<p><img src="./22_6.png" alt="" /></p>
+
+<p>PS：跟观察方向无关 &amp; max是为了剔除夹角大于90°的光</p>
+
+<h3 id="高光-specular-镜面反射">高光(specular)/镜面反射</h3>
+
+<p><img src="./22_7.png" alt="" /></p>
+
+<p>如图所示R为镜面反射方向,</p>
+
+<p>除了考虑漫反射中提到的光源到反射点的距离rrr之外，需要注意的是，观察方向在镜面反射时是很重要的，具体来说，只有当观察方向集中在反射方向周围很近的时候才能看见反射光，因此在镜面反射中会考虑R与v的夹角</p>
+
+<div>$$
+L_s = k_s(I/r^2)max(0, \cos \alpha)^p
+$$</div>
+
+<p>这里我们乘了一个指数p，因为离反射光越远就越不应该看见反射光，需要一个指数p加速衰减，如图</p>
+
+<p><img src="./22_9.png" alt="" /></p>
+
+<h4 id="blinn-phong模型">Blinn-Phong模型</h4>
+
+<p>如上文所提，我们将反射方向与人眼观察方向夹角替换成如下图所示的一个半程向量h和法线向量n的夹角。因为当v接近镜像反向，相当于h和n接近</p>
+
+<p><img src="./22_10.png" alt="" /></p>
+
+<p>这样做可以加快计算，提升效率。</p>
+
+<div>$$
+L_s = k_s(I/r^2)max(0, n \cdot h)^p
+$$</div>
+
+<h3 id="环境光-ambient">环境光(ambient)</h3>
+
+<p>因为来自于环境的光太复杂了，所以做了一个近似的简化模型:<span>$L_a = k_aI_a$</span></p>
+
+<p><img src="./22_11.png" alt="" /></p>
+
+<h3 id="blinn-phong反射模型">Blinn-Phong反射模型</h3>
+
+<div>$$
+L = L_a + L_d + L_s = k_aI_a + k_d(I/r^2)max(0, n \cdot l ) + k_s(I/r^2)max(0, n \cdot h)^p
+$$</div>
+
+<p><img src="./22_12.png" alt="" /></p>
+
+<h2 id="着色方法-频率">着色方法/频率</h2>
+
+<h3 id="flat-shading">flat shading</h3>
+
+<p>面着色，顾名思义以每一个面作为一个着色单位。模型数据大多以很多个三角面进行存储，因此也就记录了每个面的法线向量，利用每个面的法线向量进行一次Blinn-Phong反射光照模型的计算，将该颜色赋予整个面.</p>
+
+<p><img src="./22_13.png" alt="" /></p>
+
+<h3 id="gouraud-shading">gouraud shading</h3>
+
+<p>对每个三角形的顶点进行一次着色，内部颜色通过插值计算。那么逐顶点法线法线怎么计算呢。做法其实很简单，将所有共享这个点的面的法线向量加起来求均值(面积)，最后再标准化/归一化就得到了该顶点的法线向量了</p>
+
+<p><img src="./22_14.png" alt="" /></p>
+
+<h3 id="phong-shading">phong shading</h3>
+
+<p>每个像素都进行着色。通过插值计算每个点的法线，因为三角形的三个顶点由上面可以得到。逐像素法线呢？我们可以通过重心坐标计算，下文会继续说</p>
+
+<p><img src="./22_15.png" alt="" /></p>
+
+<p>总结一下，一般来说phong着效果已经很不错了。</p>
+
+<h2 id="渲染管线-流水线">渲染管线/流水线</h2>
+
+<p>所谓图形渲染管线指的是一系列操作的流程，这个流程具体来说就是将一堆具有三维几何信息的数据点最终转换到二维屏幕空间的像素,
+整个图形管线的步骤可能有不同的分法，不一定就下图所述的5部分，但整体流程一定是一样的</p>
+
+<p><img src="./22_16.png" alt="" /></p>
+
+<h3 id="顶点处理-mvp变换">顶点处理(MVP变换)</h3>
+
+<p>所有的顶点数据进行Model，View，和Projection的变换，最终得到投影到二维平面的坐标信息</p>
+
+<p><img src="./22_17.png" alt="" /></p>
+
+<h3 id="光栅化">光栅化</h3>
+
+<p>第二步三角形处理也十分容易理解，就是将所有的顶点按照原几何信息，变成三角面，每个面由3个顶点组成。得到了许许多多个三角形之后
+接下来的操作自然就是三角形光栅化了</p>
+
+<p><img src="./22_18.png" alt="" /></p>
+
+<h3 id="深度测试">深度测试</h3>
+
+<p>形成三角形之后，判断可不可见</p>
+
+<p><img src="./22_19.png" alt="" /></p>
+
+<h3 id="着色">着色</h3>
+
+<p>着色可以发生在两个阶段：顶点着色或者片元着色</p>
+
+<p><img src="./22_20.png" alt="" /></p>
+
+<p>最后一步，Framebuffer的处理，就是将所有的像素颜色信息整合在一起，输送给显示设备加以显示</p>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://www.bilibili.com/video/BV1X7411F744?p=7" target="_blank">Lecture 07 shading</a>
+<a href="https://www.bilibili.com/video/BV1X7411F744?p=8" target="_blank">Lecture 08 shading</a>
+<a href="https://www.bilibili.com/video/BV1X7411F744?p=9" target="_blank">Lecture 09 shading</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dingding</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-06-23
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+          <a href="/tags/game101/">game101</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020/06/23/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2020/06/16/">
+            <span class="next-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'xiazhibin/hugo-comment'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<div class="social-links">
+  <a href="https://xiazhibin.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dingding</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

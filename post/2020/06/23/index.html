@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading) - dingding的blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dingding" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
+
+
+<link rel="canonical" href="https://xiazhibin.github.io/post/2020/06/23/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading)" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiazhibin.github.io/post/2020/06/23/" />
+<meta property="article:published_time" content="2020-06-27T10:26:18+08:00" />
+<meta property="article:modified_time" content="2020-06-27T10:26:18+08:00" />
+<meta itemprop="name" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading)">
+<meta itemprop="description" content="">
+<meta itemprop="datePublished" content="2020-06-27T10:26:18&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-27T10:26:18&#43;08:00" />
+<meta itemprop="wordCount" content="120">
+
+
+
+<meta itemprop="keywords" content="图形学,game101," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading)"/>
+<meta name="twitter:description" content=""/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">dingding</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">dingding</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色2(shading)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-06-27 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"> 图形学 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#纹理映射">纹理映射</a>
+<ul>
+<li><a href="#纹理空间uv">纹理空间uv</a></li>
+<li><a href="#查询">查询</a>
+<ul>
+<li><a href="#重心坐标-barycentric-coordinates">重心坐标(barycentric coordinates)</a></li>
+<li><a href="#重心坐标应用">重心坐标应用</a></li>
+</ul></li>
+<li><a href="#纹理坐标使用">纹理坐标使用</a></li>
+</ul></li>
+<li><a href="#纹理过小和纹理过大的问题以及解决方案">纹理过小和纹理过大的问题以及解决方案</a>
+<ul>
+<li><a href="#纹理过小">纹理过小</a>
+<ul>
+<li><a href="#双线性插值-bilinear-interpolation">双线性插值(bilinear Interpolation)</a></li>
+</ul></li>
+<li><a href="#纹理过大">纹理过大</a></li>
+<li><a href="#mipmap">Mipmap</a></li>
+<li><a href="#各向异性过滤mipmap-nipmap">各向异性过滤Mipmap - Nipmap</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="纹理映射">纹理映射</h2>
+
+<p>这个阶段发生在Fragment Processing</p>
+
+<p>把三维空间中的点映射成二维空间的点</p>
+
+<h3 id="纹理空间uv">纹理空间uv</h3>
+
+<p>在纹理空间之内任意一个二维坐标都在[0,1]之内。三维空间的点映射成UV坐标，由自动展UV工具，然后由美术加以修饰，程序员不需要太关心。</p>
+
+<h3 id="查询">查询</h3>
+
+<h4 id="重心坐标-barycentric-coordinates">重心坐标(barycentric coordinates)</h4>
+
+<p>用来计算三角形内部的插值，使得值可以平滑过渡</p>
+
+<p><img src="./23_1.png" alt="" /></p>
+
+<p>给定三角形的三点坐标A, B, C，该平面内一点(x,y)可以写成这三点坐标的线性组合形式，即</p>
+
+<div>$$(x,y) = \alpha A+\beta B+ \gamma C 且满足\alpha+\beta+\gamma=1则称此时3个坐标A,B,C的权重\alpha, \beta ,\gamma为点(x,y)的重心坐标
+$$</div>
+
+<p>除了以上的数学定义，还有一种等价定义:</p>
+
+<p><img src="./23_2.png" alt="" /></p>
+
+<p>将一点(x,y)与A,B,C三点直接连接，构成三个三角形面积分别为<span>$A_A,A_B,A_C$</span>,即可直接定义出重心坐标如图中公式所示。</p>
+
+<p>不难得出三角形内任意一点的重心坐标：</p>
+
+<p><img src="./23_3.png" alt="" /></p>
+
+<h4 id="重心坐标应用">重心坐标应用</h4>
+
+<p>用重心坐标做三角形内部每个点的插值</p>
+
+<p><img src="23_4.png" alt="" /></p>
+
+<p>PS: 重心坐标可以插值很多属性，坐标/法线/纹理</p>
+
+<p>PSS: 三维下的重心坐标经过投影变换之后的二维下的重心坐标 是会发生改变的。</p>
+
+<h3 id="纹理坐标使用">纹理坐标使用</h3>
+
+<p><img src="23_5.png" alt="" /></p>
+
+<p>对每个光栅化的屏幕坐标算出它的uv坐标(利用三角形顶点重心坐标插值)，再利用这个uv坐标去查询texture上的颜色，把这个颜色信息当作漫反射系数Kd</p>
+
+<h2 id="纹理过小和纹理过大的问题以及解决方案">纹理过小和纹理过大的问题以及解决方案</h2>
+
+<h3 id="纹理过小">纹理过小</h3>
+
+<p>纹理过小的问题相对容易理解，我们把一张100x100的纹理贴图应用在一500x500的屏幕之上必然会导致走样失真，
+因为屏幕空间的几个像素点对应在纹理贴图的坐标上会集中在<strong>一个点</strong>（换句话说，就是多个像素公用了同一个纹理坐标）, 这样往往会造成严重的走样。</p>
+
+<p><img src="./23_6.png" alt="" /></p>
+
+<p>如图中红色点是屏幕空间下一像素所对应在texture空间中的点，由于纹理小，所以屏幕空间这个像素并不能在纹理中找到一个对应的值，只能去选择离他最近的那个橙色框起来的点。</p>
+
+<h4 id="双线性插值-bilinear-interpolation">双线性插值(bilinear Interpolation)</h4>
+
+<p>第一步，取出离红色点最近的4个黑色顶点，分别算出，该红色点在水平及竖直方向偏移的比率s,t，图示如下:</p>
+
+<p><img src="./23_7.png" alt="" /></p>
+
+<p>接着先利用s，水平方向上进行线性插值出如下图所示的u0，u1点的颜色值</p>
+
+<p><img src="./23_8.png" alt="" /></p>
+
+<p>最后我们从竖直方向进行插值，求得最后的结果:<span>$f(x,y)=lerp(t,u_0,u_1)$</span></p>
+
+<p>下面看看双线性插值的效果</p>
+
+<p><img src="./23_9.png" alt="" /></p>
+
+<p>经过双线插值之后，眼镜那里的锯齿明显柔和了很多。Bicubic是更好的插值算法，不过一般情况下双线性也够用了，而且它增加的计算量并不是很多</p>
+
+<h3 id="纹理过大">纹理过大</h3>
+
+<p>以前我也一直认为，图小了会不好办，大了应该是不会有问题的？然而事实上却是会这样，大了反而会引起更加严重的走样问题。</p>
+
+<p>假设下面的这幅图</p>
+
+<p><img src="./23_10.png" alt="" /></p>
+
+<p>当我们使用比较大的贴图时,远处出现了摩尔纹，近处出现了锯齿。</p>
+
+<p><img src="./23_11.png" alt="" /></p>
+
+<p>为什么会这样呢？我们看看这个纹理选择过程：</p>
+
+<p><img src="./23_12.png" alt="" /></p>
+
+<p>因为这个是一张贴图重复利用，根据近大远小，远处的一张完整的贴图可能在屏幕空间中仅仅是几个像素的大小，那么必然屏幕空间的一个像素对应了纹理贴图上的一片范围的点，
+这其实就是纹理过大所导致的，直观来说想用一个点采样的结果代替纹理空间一片范围的颜色信息，必然会导致严重失真！(从信号的角度来说就是，采样频率过低无法还原信号原貌)</p>
+
+<p>换个角度来看，假设纹理是50*50，屏幕是10*10，那么屏幕中一个像素就是纹理中的25个纹理像素了。而我们只用一个采样点来对这个5*5的区域采样，那么肯定是有问题的。那么第一个反应就是
+可以用MSAA这样的超采样(supersampling)方法来解决。下面看看512倍的超采样</p>
+
+<p><img src="./23_13.png" alt="" /></p>
+
+<p>效果好很多了，但是消耗太巨大了，一个像素分割了512*512个采样点。而且远处的效果也不太好。那么有没有一种技术可以快速的算出屏幕像素对应的所有texels的颜色均值呢？有那就是Mipmap了</p>
+
+<h3 id="mipmap">Mipmap</h3>
+
+<p>一个采样点的颜色信息不足以代表“footprint”里一个区域的颜色信息，如果可以求出这样一个区域里面所有颜色的均值，是不是就是一种可行的方法呢？
+所以我们的目标就是从点查询Point Query迈向区域查询Range Query。但依然存在一个问题，不同的屏幕像素所对应的footprint size是不一样大小的，看下图这样一个例子</p>
+
+<p><img src="./23_14.png" alt="" /></p>
+
+<p>远处圆圈里的footprint必然比近处的要大，因此必须要准备不同level的区域查询才可以，而这正是Mipmap - Allowing (fast, approx., square) range queries。</p>
+
+<p><img src="./23_15.png" alt="" /></p>
+
+<p>level 0代表的是原始texture，也是精度最高的纹理，随着level的提升，每提升一级将4个相邻像素点求均值合为一个像素点，因此越高的level也就代表了更大的footprint的区域查询。
+接下来要做的就是根据屏幕像素的footprint大小选定不同level的texture，再进行点查询即可，而这其实就相当于在原始texture上进行了区域查询！</p>
+
+<p>但是怎么确定用哪一个level呢？</p>
+
+<p><img src="./23_16.png" alt="" /></p>
+
+<p>在屏幕空间中取当前像素点的右方和上方的两个相邻像素点(4个全取也可以)，分别查询得到这3个点对应在Texture space的坐标，计算出当前像素点与右方像素点和上方像素点在Texture space的距离，
+二者取最大值，计算公式如图中所示，那么level D就是这个距离的log2值 (<span>$D=log_{2}L$</span>) 。这不难理解，读者可以具体取几个例子比如L = 1，L = 2，L = 4，看看是否符合这样的计算即可。</p>
+
+<p>但是这里D值算出来是一个连续值，并不是一个整数，而我们的Level都是整数，这里有两种对应的方法：</p>
+
+<ul>
+<li>四舍五入取得最近的那个level D</li>
+<li>利用D值在 向下和向上取整的两个不同level进行3线性插值</li>
+</ul>
+
+<p>第一个方法很容易理解，具体讲述一下第二个方法，如图:</p>
+
+<p><img src="./23_17.png" alt="" /></p>
+
+<p>所谓3线性插值，就是在向下取整的D level上进行一次双线性插值(前文提过)，再在D+1 level之上进行一次双线性插值，
+这二者数据再根据实际的连续D值在向下和向上取整的两个不同level之间的比例，再来一次线性插值，而这整体就是一个三线性插值了。效果如图:</p>
+
+<p><img src="./23_18.png" alt="" /></p>
+
+<p>效果是不错了，但是远处的就太模糊了，为什么会这样的呢？</p>
+
+<h3 id="各向异性过滤mipmap-nipmap">各向异性过滤Mipmap - Nipmap</h3>
+
+<p>产生上面现象的原因是因为，所采用的不同level的Mipmap默认的都是正方形区域的Range Query，然而真实情况并不是如此，见下图:</p>
+
+<p><img src="./23_19.png" alt="" /></p>
+
+<p>可以看出不同screen space的像素点所对应的footprint是不同的，有长方形，甚至是不规则图形，那么针对这种情况，有的所需要的是仅仅是水平方向的高level，
+有的需要的仅仅是竖直方向上的高level，因此这也就启发了各向异性过滤:</p>
+
+<p><img src="./23_20.png" alt="" /></p>
+
+<p>利用这样不同的贴图，更加精细的选择后结果就会明显好很多,远处模糊的现象已经大大减少了</p>
+
+<p><img src="./23_21.png" alt="" /></p>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://www.bilibili.com/video/BV1X7411F744?p=7" target="_blank">Lecture 07 shading</a>
+<a href="https://www.bilibili.com/video/BV1X7411F744?p=8" target="_blank">Lecture 08 shading</a>
+<a href="https://www.bilibili.com/video/BV1X7411F744?p=9" target="_blank">Lecture 09 shading</a></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dingding</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-06-27
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+          <a href="/tags/game101/">game101</a>
+          </div>
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/2020/06/22/">
+            <span class="next-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'xiazhibin/hugo-comment'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<div class="social-links">
+  <a href="https://xiazhibin.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dingding</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2) - dingding的blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="dingding" /><meta name="description" content="" /><meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.72.0 with theme even" />
+
+
+<link rel="canonical" href="https://xiazhibin.github.io/post/2020/06/16/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.78f8f17bab244b9ee62ad16480c9584d5fc2db06ae20681d1ca225cefd80767c.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2)" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://xiazhibin.github.io/post/2020/06/16/" />
+<meta property="article:published_time" content="2020-06-14T19:08:05+08:00" />
+<meta property="article:modified_time" content="2020-06-14T19:08:05+08:00" />
+<meta itemprop="name" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2)">
+<meta itemprop="description" content="">
+<meta itemprop="datePublished" content="2020-06-14T19:08:05&#43;08:00" />
+<meta itemprop="dateModified" content="2020-06-14T19:08:05&#43;08:00" />
+<meta itemprop="wordCount" content="285">
+
+
+
+<meta itemprop="keywords" content="图形学,game101," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2)"/>
+<meta name="twitter:description" content=""/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">dingding</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">dingding</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(2)</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2020-06-14 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/"> 图形学 </a>
+            </div>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#反走样-anti-aliasing">反走样(anti aliasing)</a>
+<ul>
+<li><a href="#采样产生的问题">采样产生的问题</a>
+<ul>
+<li><a href="#原因">原因</a></li>
+</ul></li>
+<li><a href="#频域">频域</a>
+<ul>
+<li><a href="#傅里叶变换-将时域变成频域">傅里叶变换：将时域变成频域</a></li>
+<li><a href="#反傅里叶变换">反傅里叶变换</a></li>
+<li><a href="#采样的频率和函数的频率不一致导致走样">采样的频率和函数的频率不一致导致走样</a></li>
+</ul></li>
+<li><a href="#滤波-filtering">滤波(filtering)</a></li>
+<li><a href="#卷积">卷积</a></li>
+<li><a href="#采样">采样</a></li>
+<li><a href="#走样">走样</a></li>
+<li><a href="#反走样">反走样</a></li>
+</ul></li>
+<li><a href="#深度测试">深度测试</a>
+<ul>
+<li><a href="#画家算法">画家算法</a></li>
+<li><a href="#深度测试算法">深度测试算法</a></li>
+<li><a href="#伪代码">伪代码</a></li>
+<li><a href="#z-fighting">z-fighting</a></li>
+</ul></li>
+<li><a href="#参考">参考</a></li>
+<li><a href="#参考代码">参考代码</a>
+<ul>
+<li><a href="#傅里叶变换">傅里叶变换</a></li>
+<li><a href="#滤波">滤波</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h2 id="反走样-anti-aliasing">反走样(anti aliasing)</h2>
+
+<h3 id="采样产生的问题">采样产生的问题</h3>
+
+<ul>
+<li>产生锯齿</li>
+<li>摩尔纹</li>
+<li>行驶中的轮胎效应</li>
+<li>还有更多</li>
+</ul>
+
+<h4 id="原因">原因</h4>
+
+<p>信用变化太快，采样的速度跟不上</p>
+
+<h3 id="频域">频域</h3>
+
+<h4 id="傅里叶变换-将时域变成频域">傅里叶变换：将时域变成频域</h4>
+
+<p>任何一个周期函数都可以写成一系列余弦函数的组合</p>
+
+<h4 id="反傅里叶变换">反傅里叶变换</h4>
+
+<p>频率也可以换成函数</p>
+
+<h4 id="采样的频率和函数的频率不一致导致走样">采样的频率和函数的频率不一致导致走样</h4>
+
+<p>针对两个频率完全不同的函数，但是采样出来的结果无法区分他们</p>
+
+<h3 id="滤波-filtering">滤波(filtering)</h3>
+
+<p>去掉一系列频率内容</p>
+
+<p><img src="./16_1.png" alt="" /></p>
+
+<p>我们将一张图由时域变成频域，我们发现中心区域(低频)比较亮，四周(高频)比较暗</p>
+
+<p>我们将它进行&rdquo;高通滤波&rdquo;之后得到下图，频域图中心原本比较亮的区域变暗；时域图也只留下一些边缘</p>
+
+<p><img src="./16_2.png" alt="" /></p>
+
+<p>如果将其进行&rdquo;低通滤波&rdquo;，频域图只留下中心原本比较亮的；时域图变得模糊</p>
+
+<p><img src="./16_3.png" alt="" /></p>
+
+<h3 id="卷积">卷积</h3>
+
+<p>卷积 = 滤波 = 加权平均</p>
+
+<p><img src="./16_4.jpeg" alt="" /></p>
+
+<p>从上图我们得出以下结论</p>
+
+<ul>
+<li>将图片和卷积核进行傅里叶变换转成频域，相乘，然后逆傅里叶变换，相当于时域上的卷积</li>
+<li>时域的卷积 = 频域上的乘积</li>
+</ul>
+
+<p>这个3X3的卷积核，其实就是一个低通滤波器，还有其他各种各样的卷积核。</p>
+
+<h3 id="采样">采样</h3>
+
+<p>重复原始信号的频谱</p>
+
+<p><img src="./16_9.png" alt="" /></p>
+
+<p>左边时域上周期函数乘以采样函数（图上为冲激函数），得到采样结果。相当于右边的频域上，进行卷积</p>
+
+<h3 id="走样">走样</h3>
+
+<p>频域上的内容产生混叠</p>
+
+<p><img src="./16_10.png" alt="" /></p>
+
+<h3 id="反走样">反走样</h3>
+
+<ul>
+<li>增加采样率</li>
+<li>先进行模糊，然后再采样</li>
+</ul>
+
+<p><img src="./16_11.png" alt="" /></p>
+
+<h2 id="深度测试">深度测试</h2>
+
+<h3 id="画家算法">画家算法</h3>
+
+<p>从远到近开始画。但是这种算法还有缺陷</p>
+
+<p><img src="./16_12.png" alt="" /></p>
+
+<p>遇到这种两两重叠的图片画家算法就会失效了</p>
+
+<h3 id="深度测试算法">深度测试算法</h3>
+
+<ul>
+<li>每次采样都为每个像素保存当前的最小深度z</li>
+<li>需要额外的buff来保存深度的值
+
+<ul>
+<li>frame buffer 保存color</li>
+<li>depth buffer 保存depth</li>
+</ul></li>
+</ul>
+
+<h3 id="伪代码">伪代码</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">X</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">Y</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">triangle</span> <span class="ow">in</span> <span class="n">triangles</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sample</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">triangle</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">zbuff</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]:</span>
+                    <span class="n">framebuff</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+                    <span class="n">zbuff</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">z</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><img src="./16_13.png" alt="" /></p>
+
+<h3 id="z-fighting">z-fighting</h3>
+
+<p>当两个或者多个物体距离摄像机相同/相似的距离的时候，会产生物体的重叠部位便不停的闪烁。z-fighting顾名思义就是渲染的时候不同物体&rdquo;抢&rdquo;相同的z-buff的值</p>
+
+<p>常用解决方案：</p>
+
+<ul>
+<li>建模的时候不要让模型之间的距离太近</li>
+<li>人为确定渲染顺序</li>
+<li>Polygon offset</li>
+<li>使用精度更高的z-buff</li>
+</ul>
+
+<h2 id="参考">参考</h2>
+
+<p><a href="https://www.bilibili.com/video/BV1X7411F744?p=6" target="_blank">Lecture 06 Rasterization</a></p>
+
+<p><a href="https://zhuanlan.zhihu.com/p/19763358" target="_blank">傅里叶变换</a></p>
+
+<p><a href="https://www.pyimagesearch.com/2016/07/25/convolutions-with-opencv-and-python/" target="_blank">卷积</a></p>
+
+<p><a href="http://bigwww.epfl.ch/demo/ip/demos/FFT-filtering/" target="_blank">在线傅里叶变换</a></p>
+
+<p><a href="https://aishack.in/tutorials/image-convolution-examples/" target="_blank">常见卷积核</a></p>
+
+<p><a href="https://www.cnblogs.com/lst619247/p/9098845.html" target="_blank">threejs- z-fighting 问题</a></p>
+
+<h2 id="参考代码">参考代码</h2>
+
+<h3 id="傅里叶变换">傅里叶变换</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;./16_5.png&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">)</span> <span class="c1">#转成灰度图</span>
+<span class="n">im_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">im_arr</span><span class="p">)</span> <span class="c1"># 傅里叶变换</span>
+<span class="c1">## 以上已经完成了傅里叶变换了，下面的都是为了展示这张变换后的图所进行的操作</span>
+<span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="c1"># 默认结果中心点位置是在左上角，转移到中间位置</span>
+<span class="n">fimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fshift</span><span class="p">))</span> <span class="c1">#fft结果是复数, 其绝对值结果是振幅</span>
+<span class="n">fimg</span> <span class="o">=</span> <span class="p">(</span><span class="n">fimg</span> <span class="o">-</span> <span class="n">fimg</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">fimg</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">fimg</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="c1"># 归一化</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">((</span><span class="n">fimg</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+<span class="n">result</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;16_6.png&#39;</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><img src="./16_5.png" alt="前" />
+<img src="./16_6.png" alt="后" /></p>
+
+<h3 id="滤波">滤波</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+
+
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;16_7.png&#39;</span><span class="p">)</span>
+<span class="n">im_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="o">/</span> <span class="mi">9</span>
+
+<span class="n">sz</span> <span class="o">=</span> <span class="n">im_arr</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">sz</span> <span class="o">=</span> <span class="p">(</span><span class="n">sz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">kernel</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">kernel</span><span class="p">,</span> <span class="p">(((</span><span class="n">sz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">),</span> <span class="p">((</span><span class="n">sz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)),</span> <span class="s1">&#39;constant&#39;</span><span class="p">)</span> <span class="c1">#填充成跟原图大小</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">im_arr</span><span class="p">)</span>  <span class="c1"># 傅里叶变换</span>
+<span class="n">f_kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">kernel</span><span class="p">)</span>  <span class="c1"># 傅里叶变换</span>
+
+<span class="n">newf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">f</span> <span class="o">*</span> <span class="n">f_kernel</span><span class="p">)</span> <span class="c1"># 时域上的卷积就是频率上的乘积，反傅里叶变换</span>
+
+<span class="c1">### 画图</span>
+<span class="n">fshift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">newf</span><span class="p">)</span>  <span class="c1"># 默认结果中心点位置是在左上角，转移到中间位置</span>
+<span class="n">fimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fshift</span><span class="p">)</span> <span class="c1">#fft结果是复数, 取实数部分</span>
+<span class="n">fimg</span> <span class="o">=</span> <span class="n">fimg</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">new_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">rint</span><span class="p">(</span><span class="n">fimg</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">new_image</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;16_8.png&#39;</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p><img src="./16_7.png" alt="前" />
+<img src="./16_8.png" alt="后" /></p>
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">dingding</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2020-06-14
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/">图形学</a>
+          <a href="/tags/game101/">game101</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/2020/06/22/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 着色1(shading)</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/2020/06/15/">
+            <span class="next-text nav-default">&lt;GAMES101-现代计算机图形学入门&gt; 学习笔记 - 光栅化(1)</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  <div id="utter-container"></div>
+    <script src="https://utteranc.es/client.js"
+        repo= 'xiazhibin/hugo-comment'
+        issue-term= "pathname"
+        theme= 'github-light'
+        crossorigin= "anonymous"
+        async>
+    </script>
+  
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<div class="social-links">
+  <a href="https://xiazhibin.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2019 - 
+    2020
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">dingding</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.d7b7ada643c9c1a983026e177f141f7363b4640d619caf01d8831a6718cd44ea.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"  integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

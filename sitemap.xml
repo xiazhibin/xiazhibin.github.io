@@ -2,49 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xiazhibin.github.io/post/2020/06/15/</loc>
-    <lastmod>2020-06-14T17:57:57+08:00</lastmod>
+    <loc>https://xiazhibin.github.io/post/2020/06/23/</loc>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xiazhibin.github.io/categories/</loc>
-    <lastmod>2020-06-14T17:57:57+08:00</lastmod>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xiazhibin.github.io/</loc>
-    <lastmod>2020-06-14T17:57:57+08:00</lastmod>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiazhibin.github.io/tags/game101/</loc>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xiazhibin.github.io/post/</loc>
-    <lastmod>2020-06-14T17:57:57+08:00</lastmod>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xiazhibin.github.io/tags/</loc>
-    <lastmod>2020-06-14T17:57:57+08:00</lastmod>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xiazhibin.github.io/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
-    <lastmod>2020-06-14T17:57:57+08:00</lastmod>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://xiazhibin.github.io/categories/%E5%9B%BE%E5%BD%A2%E5%AD%A6/</loc>
+    <lastmod>2020-06-27T10:26:18+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiazhibin.github.io/post/2020/06/22/</loc>
+    <lastmod>2020-06-23T20:58:32+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiazhibin.github.io/post/2020/06/16/</loc>
+    <lastmod>2020-06-14T19:08:05+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://xiazhibin.github.io/post/2020/06/15/</loc>
     <lastmod>2020-06-14T17:57:57+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
